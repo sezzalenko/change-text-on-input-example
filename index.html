@@ -27,7 +27,9 @@
     <script>
       const textWrapper = document.getElementById("text-wrapper");
       const textInput = document.getElementById("text-input");
-      const words = "satellite,galaxy,moon,star,planet,nebula,constellation,pulsar,quasar,ring,matter,gravity,antimatter,spacetime,dark matter,electromagnetism,atmosphere,gas,dust,ice,meteor,comet".split(",");
+      const words = "satellite,galaxy,moon,star,planet,nebula,constellation,pulsar,quasar,ring,matter,gravity,antimatter,spacetime,dark matter,electromagnetism,atmosphere,gas,dust,ice,meteor,comet".split(
+        ","
+      );
 
       function changeText(e) {
         const resultWords = words.filter(word =>
@@ -41,10 +43,13 @@
           const line = document.createElement("div");
           line.innerHTML = resultWords[i];
           textWrapper.appendChild(line);
-      
-        }     
+        }
+        if (resultWords.length === 0) {
+          const line = document.createElement("div");
+          line.innerHTML = "No results";
+          textWrapper.appendChild(line);
+        }
       }
-      
 
       textInput.addEventListener("input", changeText);
     </script>
