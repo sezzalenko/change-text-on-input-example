@@ -39,7 +39,7 @@
 
       function changeText(e) {
         const resultWords = words.filter(word =>
-          word.startsWith(e.target.value)
+          word.toLowerCase().startsWith(e.target.value.toLowerCase().trim())
         );
         // clear exist words
         while (textWrapper.firstChild) {
