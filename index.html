@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>A simple change text exercise</title>
+
+    <meta name="description" content="A simple exercise template." />
+    <!-- styles -->
+    <style>
+      #text-wrapper {
+        padding: 3px 0;
+      }
+      div > div {
+        color: green;
+        padding: 3px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Change text on input</h1>
+    <input id="text-input" />
+    <div id="text-wrapper"></div>
+    <!-- script -->
+    <script>
+      const textWrapper = document.getElementById("text-wrapper");
+      const textInput = document.getElementById("text-input");
+      const words = "a place,a platter,between,b place,c place".split(",");
+
+      function changeText(e) {
+        const resultWords = words.filter(word =>
+          word.startsWith(e.target.value)
+        );
+        // clear exist words
+        while (textWrapper.firstChild) {
+          textWrapper.removeChild(textWrapper.firstChild);
+        }
+        for (var i = 0; i < resultWords.length; i++) {
+          const line = document.createElement("div");
+          line.innerHTML = resultWords[i];
+          textWrapper.appendChild(line);
+        }
+      }
+
+      textInput.addEventListener("input", changeText);
+    </script>
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js" defer></script>
+  </body>
+</html>
